@@ -21,7 +21,10 @@ const AdminPage = ({ navigation }) => {
           </View>
           <View style={{}}>
             {/* button1 */}
-            <TouchableOpacity style={styles.button1}>
+            <TouchableOpacity
+              style={styles.button1}
+              onPress={() => navigation.navigate('SiswaPage')}
+            >
               <LottieView
                 source={require('../../assets/animations/siswa.json')}
                 autoPlay
@@ -49,7 +52,7 @@ const AdminPage = ({ navigation }) => {
                 source={require('../../assets/animations/guru.json')}
                 autoPlay
                 loop
-                style={{ width: 75, height: 75, marginTop: -5 }}
+                style={{ width: 60, height: 60, marginLeft: 10 }}
               />
               <View
                 style={{
@@ -58,8 +61,12 @@ const AdminPage = ({ navigation }) => {
                   justifyContent: 'center',
                 }}
               >
-                <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>Jumlah Guru</Text>
-                <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>6</Text>
+                <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold', marginLeft: -10 }}>
+                  Jumlah Guru
+                </Text>
+                <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold', marginLeft: -10 }}>
+                  6
+                </Text>
               </View>
               <Image source={Arrow} style={{ marginRight: 20 }} />
             </TouchableOpacity>
