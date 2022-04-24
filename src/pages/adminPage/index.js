@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from
 import { Arrow, Home, Login, Logo, Logout } from '../../assets/images';
 import LottieView from 'lottie-react-native';
 
-const AdminPage = () => {
+const AdminPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={Login} style={styles.imageBackground}>
         <View style={styles.header}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('HomePage')}>
             <Image source={Home} />
           </TouchableOpacity>
           <TouchableOpacity>
