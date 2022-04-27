@@ -5,8 +5,8 @@ export const getUser = () => {
     dispatch({
       type: GET_USER,
       payload: {
-        nis: 's1tis190356',
-        password: 'rama2617',
+        Nama: '123',
+        Tgl: '123',
       },
     });
   };

@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../actions/userActions';
 
 const LoginPage = ({ navigation }) => {
-  const [nis, setNis] = useState('');
-  const [password, setPassword] = useState('');
+  const [Nama, setNama] = useState('');
+  const [Tgl, setTgl] = useState('');
   const [loading, setLoading] = useState(false);
   const [hide, setHide] = useState(true);
   const [error, setError] = useState(false);
@@ -41,9 +41,9 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             mode="outlined"
             theme={{ roundness: 25 }}
-            label="NIS (Nomor Induk Siswa)"
-            value={nis}
-            onChangeText={(value) => setNis(value)}
+            label="Nama Depan Siswa"
+            value={Nama}
+            onChangeText={(value) => setNama(value)}
             outlineColor="#1E40AF"
             activeOutlineColor="#1E40AF"
             style={styles.input}
@@ -55,9 +55,9 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             mode="outlined"
             theme={{ roundness: 25 }}
-            label="Password"
-            value={password}
-            onChangeText={(value) => setPassword(value)}
+            label="Tanggal Lahir"
+            value={Tgl}
+            onChangeText={(value) => setTgl(value)}
             outlineColor="#1E40AF"
             activeOutlineColor="#1E40AF"
             secureTextEntry={hide}
@@ -74,22 +74,24 @@ const LoginPage = ({ navigation }) => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
+          <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
+          <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 5 }}>28032017</Text>
           <Text style={styles.textError}>{error ? textError : ''}</Text>
         </View>
-        <View style={{ marginTop: 25 }} />
+        <View style={{ marginTop: 20 }} />
         <View style={{ width: '100%' }}>
           <Button
             mode="contained"
             theme={{ roundness: 50 }}
             onPress={() => {
-              if (nis == userReducer.nis && password == userReducer.password) {
+              if (Nama == userReducer.Nama && Tgl == userReducer.Tgl) {
                 navigation.replace('AdminPage');
               } else {
                 console.log('login gagal');
-                if ((nis === '') & (password == '')) {
-                  setTextError('NIS dan Password wajib diisi !');
+                if ((Nama === '') & (Tgl == '')) {
+                  setTextError('Nama dan Tgl wajib diisi !');
                 } else {
-                  setTextError('NIS dan Password tidak cocok !');
+                  setTextError('Nama dan Tgl tidak cocok !');
                 }
                 setError(true);
               }

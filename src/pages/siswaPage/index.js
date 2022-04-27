@@ -1,13 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
-import { Doa, Login, Logo } from '../../assets/images';
+import { Login } from '../../assets/images';
 
 const SplashPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={Login} resizeMode="cover" style={styles.backgroundImage}>
         {/* button 1 */}
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('DaftarSiswaPage');
+          }}
+        >
           <View style={styles.content1}>
             <Text style={styles.textButton}>Kelas A</Text>
             <Text style={styles.textButton}>16</Text>

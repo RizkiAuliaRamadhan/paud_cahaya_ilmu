@@ -4,5 +4,6 @@ import HomePage from './homePage';
 import AdminPage from './adminPage';
 import AlQuran from './alquran';
 import SiswaPage from './siswaPage';
+import DaftarSiswaPage from './daftarSiswaPage';
 
-export { SplashPage, LoginPage, HomePage, AdminPage, AlQuran, SiswaPage };
+export { SplashPage, LoginPage, HomePage, AdminPage, AlQuran, DaftarSiswaPage, SiswaPage };

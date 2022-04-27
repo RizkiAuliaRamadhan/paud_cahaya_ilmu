@@ -1,7 +1,15 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AdminPage, AlQuran, HomePage, LoginPage, SplashPage, SiswaPage } from '../pages';
+import {
+  AdminPage,
+  AlQuran,
+  HomePage,
+  LoginPage,
+  SplashPage,
+  SiswaPage,
+  DaftarSiswaPage,
+} from '../pages';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +25,7 @@ const Routes = () => {
         <Stack.Screen name="AlQuran" component={AlQuran} options={options} />
         <Stack.Screen name="AdminPage" component={AdminPage} options={options} />
         <Stack.Screen name="SiswaPage" component={SiswaPage} options={options} />
+        <Stack.Screen name="DaftarSiswaPage" component={DaftarSiswaPage} options={options} />
       </Stack.Navigator>
     </NavigationContainer>
   );
