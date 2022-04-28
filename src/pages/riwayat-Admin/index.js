@@ -2,27 +2,20 @@ import React from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { Login } from '../../assets/images';
 
-const SiswaPAge = ({ navigation }) => {
+const RiwayatAdmin = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={Login} resizeMode="cover" style={styles.backgroundImage}>
         {/* button 1 */}
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate('DaftarSiswaPage');
-          }}
-        >
+        <TouchableOpacity style={styles.button}>
           <View style={styles.content1}>
             <Text style={styles.textButton}>Kelas A</Text>
-            <Text style={styles.textButton}>16</Text>
           </View>
         </TouchableOpacity>
         {/* button 1 */}
         <TouchableOpacity style={styles.button}>
           <View style={styles.content2}>
             <Text style={styles.textButton}>Kelas B</Text>
-            <Text style={styles.textButton}>20</Text>
           </View>
         </TouchableOpacity>
       </ImageBackground>
@@ -68,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SiswaPAge;
+export default RiwayatAdmin;

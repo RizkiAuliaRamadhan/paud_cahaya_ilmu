@@ -47,7 +47,10 @@ const AdminPage = ({ navigation }) => {
             </TouchableOpacity>
             {/* button2 */}
             <View style={{ marginTop: 25 }} />
-            <TouchableOpacity style={styles.button2}>
+            <TouchableOpacity
+              style={styles.button2}
+              onPress={() => navigation.navigate('DaftarGuruPage')}
+            >
               <LottieView
                 source={require('../../assets/animations/guru.json')}
                 autoPlay
@@ -70,9 +73,12 @@ const AdminPage = ({ navigation }) => {
               </View>
               <Image source={Arrow} style={{ marginRight: 20 }} />
             </TouchableOpacity>
-            {/* button3 */}
+            {/* button3 Riwayat Hafalan */}
             <View style={{ marginTop: 25 }} />
-            <TouchableOpacity style={styles.button3}>
+            <TouchableOpacity
+              style={styles.button3}
+              onPress={() => navigation.navigate('RiwayatAdmin')}
+            >
               <LottieView
                 source={require('../../assets/animations/listhafalan.json')}
                 autoPlay

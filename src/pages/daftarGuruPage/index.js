@@ -11,7 +11,7 @@ import {
 import { Login, Tambah, Edit, Delete } from '../../assets/images';
 import { Modal, Portal, TextInput, Button } from 'react-native-paper';
 
-const DaftarSiswaPage = ({ navigation }) => {
+const DaftarGuruPage = ({ navigation }) => {
   const [modal, setModal] = React.useState(false);
   const showModal = () => setModal(true);
   const hideModal = () => setModal(false);
@@ -49,7 +49,7 @@ const DaftarSiswaPage = ({ navigation }) => {
           {tambah ? (
             <View>
               <Text style={styles.titleModal}>Tambah Data</Text>
-              <Text style={styles.titleModal}>Kelas A</Text>
+              <Text style={styles.titleModal}>Guru</Text>
               <View style={{ marginBottom: 25 }} />
               <TextInput
                 mode="outlined"
@@ -87,7 +87,7 @@ const DaftarSiswaPage = ({ navigation }) => {
           ) : (
             <View>
               <Text style={styles.titleModal}>Edit Data</Text>
-              <Text style={styles.titleModal}>Kelas A</Text>
+              <Text style={styles.titleModal}>Guru</Text>
               <View style={{ marginBottom: 25 }} />
               <TextInput
                 mode="outlined"
@@ -127,15 +127,15 @@ const DaftarSiswaPage = ({ navigation }) => {
       </Portal>
       <ImageBackground source={Login} resizeMode="cover" style={styles.backgroundImage}>
         <View style={styles.header}>
-          <Text style={styles.title}>Kelas A</Text>
+          <Text style={styles.title}>Guru</Text>
         </View>
         <View style={styles.body}>
           <ScrollView showsVerticalScrollIndicator={false}>
             {/* Box */}
             <View style={styles.box}>
               <View style={styles.itemBox1}>
-                <Text style={styles.itemTextBox1}>Adam</Text>
-                <Text style={styles.itemTextBox1}>28032017</Text>
+                <Text style={styles.itemTextBox1}>Nisa</Text>
+                <Text style={styles.itemTextBox1}>28031995</Text>
               </View>
               <View style={styles.itemBox2}>
                 {/* button Edit */}
@@ -282,4 +282,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DaftarSiswaPage;
+export default DaftarGuruPage;

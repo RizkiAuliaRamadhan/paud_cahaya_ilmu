@@ -9,6 +9,8 @@ import {
   SplashPage,
   SiswaPage,
   DaftarSiswaPage,
+  DaftarGuruPage,
+  RiwayatAdmin,
 } from '../pages';
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +28,8 @@ const Routes = () => {
         <Stack.Screen name="AdminPage" component={AdminPage} options={options} />
         <Stack.Screen name="SiswaPage" component={SiswaPage} options={options} />
         <Stack.Screen name="DaftarSiswaPage" component={DaftarSiswaPage} options={options} />
+        <Stack.Screen name="DaftarGuruPage" component={DaftarGuruPage} options={options} />
+        <Stack.Screen name="RiwayatAdmin" component={RiwayatAdmin} options={options} />
       </Stack.Navigator>
     </NavigationContainer>
   );
