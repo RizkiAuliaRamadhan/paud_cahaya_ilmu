@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { Login } from '../../assets/images';
 
@@ -10,19 +10,24 @@ const SiswaPAge = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            navigation.navigate('DaftarSiswaPage');
+            navigation.navigate('DaftarSiswaPage', { kelas: 'A' });
           }}
         >
           <View style={styles.content1}>
             <Text style={styles.textButton}>Kelas A</Text>
-            <Text style={styles.textButton}>16</Text>
+            {/* <Text style={styles.textButton}>16</Text> */}
           </View>
         </TouchableOpacity>
         {/* button 1 */}
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('DaftarSiswaPage', { kelas: 'B' });
+          }}
+        >
           <View style={styles.content2}>
             <Text style={styles.textButton}>Kelas B</Text>
-            <Text style={styles.textButton}>20</Text>
+            {/* <Text style={styles.textButton}>20</Text> */}
           </View>
         </TouchableOpacity>
       </ImageBackground>

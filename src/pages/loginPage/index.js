@@ -5,6 +5,7 @@ import * as Animatable from 'react-native-animatable';
 import { TextInput, Button, Checkbox, Colors } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../actions/userActions';
+import { getDataGuru, getDataSiswa } from '../../actions/dataActions';
 
 const LoginPage = ({ navigation }) => {
   const [Nama, setNama] = useState('');
@@ -17,12 +18,36 @@ const LoginPage = ({ navigation }) => {
   // reducer
   const dispatch = useDispatch();
   const userReducer = useSelector((state) => state.UserReducer.dataUser);
+  const dataSiswaReducer = useSelector((state) => state.DataReducer.dataSiswaResult);
+  const dataGuruReducer = useSelector((state) => state.DataReducer.dataGuruResult);
+
+  let dataSiswa = {};
 
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getDataSiswa());
+    dispatch(getDataGuru());
   }, []);
 
-  console.log(userReducer);
+  const login = () => {
+    // if (Nama == userReducer.Nama && Tgl == userReducer.Tgl) {
+    //   navigation.replace('AdminPage');
+    // } else {
+    //   console.log('login gagal');
+    //   if ((Nama === '') & (Tgl == '')) {
+    //     setTextError('Nama dan Tgl wajib diisi !');
+    //   } else {
+    //     setTextError('Nama dan Tgl tidak cocok !');
+    //   }
+    //   setError(true);
+    // }
+    Object.keys(dataSiswaReducer).map((key) => {
+      const data = dataSiswaReducer[key];
+      console.log(key);
+    });
+    const dataGuru = Object.keys(dataGuruReducer);
+    // console.log(dataSiswa.includes('b5E6IzWz4mTuUmRAgDxQJvfUTjQ2'));
+  };
 
   return (
     <View style={styles.container}>
@@ -41,7 +66,7 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             mode="outlined"
             theme={{ roundness: 25 }}
-            label="Nama Depan Siswa"
+            label="Nama Siswa"
             value={Nama}
             onChangeText={(value) => setNama(value)}
             outlineColor="#1E40AF"
@@ -55,7 +80,8 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             mode="outlined"
             theme={{ roundness: 25 }}
-            label="Tanggal Lahir"
+            label="Password"
+            placeholder="Tanggal Lahir"
             value={Tgl}
             onChangeText={(value) => setTgl(value)}
             outlineColor="#1E40AF"
@@ -84,17 +110,7 @@ const LoginPage = ({ navigation }) => {
             mode="contained"
             theme={{ roundness: 50 }}
             onPress={() => {
-              if (Nama == userReducer.Nama && Tgl == userReducer.Tgl) {
-                navigation.replace('AdminPage');
-              } else {
-                console.log('login gagal');
-                if ((Nama === '') & (Tgl == '')) {
-                  setTextError('Nama dan Tgl wajib diisi !');
-                } else {
-                  setTextError('Nama dan Tgl tidak cocok !');
-                }
-                setError(true);
-              }
+              login();
             }}
             loading={loading}
             style={styles.button}

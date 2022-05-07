@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { Arrow, Home, Login, Logo, Logout } from '../../assets/images';
 import LottieView from 'lottie-react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDataGuru, getDataSiswa } from '../../actions/dataActions';
 
 const AdminPage = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const dataGuruReducerResult = useSelector((state) => state.DataReducer.dataGuruResult);
+  const dataSiswaReducerResult = useSelector((state) => state.DataReducer.dataSiswaResult);
+  useEffect(() => {
+    dispatch(getDataGuru());
+    dispatch(getDataSiswa());
+  }, []);
+  const jumlahDataGuru = Object.keys(dataGuruReducerResult).length;
+  const jumlahDataSiswa = Object.keys(dataSiswaReducerResult).length;
+
   return (
     <View style={styles.container}>
       <ImageBackground source={Login} style={styles.imageBackground}>
@@ -41,7 +53,9 @@ const AdminPage = ({ navigation }) => {
                 <Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>
                   Jumlah Siswa
                 </Text>
-                <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>36</Text>
+                <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>
+                  {jumlahDataSiswa}
+                </Text>
               </View>
               <Image source={Arrow} style={{ marginRight: 20 }} />
             </TouchableOpacity>
@@ -68,7 +82,7 @@ const AdminPage = ({ navigation }) => {
                   Jumlah Guru
                 </Text>
                 <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold', marginLeft: -10 }}>
-                  6
+                  {jumlahDataGuru}
                 </Text>
               </View>
               <Image source={Arrow} style={{ marginRight: 20 }} />

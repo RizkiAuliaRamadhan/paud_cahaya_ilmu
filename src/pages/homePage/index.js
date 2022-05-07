@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from 'react-native';
 import { Bg1, Doa, GreenGradient, Logo, Quran } from '../../assets/images';
@@ -9,7 +9,7 @@ const HomePage = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
 
   useFocusEffect(
-    React.useCallback(() => {
+    useCallback(() => {
       const unsubscribe = setVisible(false);
 
       // return () => unsubscribe();
