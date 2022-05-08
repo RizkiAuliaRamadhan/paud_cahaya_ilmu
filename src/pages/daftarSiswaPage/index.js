@@ -12,7 +12,7 @@ import { Login, Tambah, Edit, Delete } from '../../assets/images';
 import { Modal, Portal, TextInput, Button } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-import { DeleteData, getDataSiswa } from '../../actions/dataActions';
+import { DeleteData, getData } from '../../actions/dataActions';
 
 const DaftarSiswaPage = ({ route, navigation }) => {
   let { kelas } = route.params;
@@ -32,10 +32,10 @@ const DaftarSiswaPage = ({ route, navigation }) => {
 
   const dispatch = useDispatch();
   const userReducerLoading = useSelector((state) => state.AuthReducer.registerLoading);
-  const dataSiswaReducerResult = useSelector((state) => state.DataReducer.dataSiswaResult);
+  const dataReducerResult = useSelector((state) => state.DataReducer.dataResult);
 
   useEffect(() => {
-    dispatch(getDataSiswa());
+    dispatch(getData());
   }, []);
 
   const tambahData = () => {
@@ -51,7 +51,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
         role: 'siswa',
         kelas,
       };
-      dispatch(registerUser(datas, tgl, datas.role));
+      dispatch(registerUser(datas, tgl));
       setTimeout(() => {
         navigation.replace('AdminPage');
       }, 2000);
@@ -173,8 +173,8 @@ const DaftarSiswaPage = ({ route, navigation }) => {
         </View>
         <View style={styles.body}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            {Object.keys(dataSiswaReducerResult).map((key, index) => {
-              const data = dataSiswaReducerResult[key];
+            {Object.keys(dataReducerResult).map((key, index) => {
+              const data = dataReducerResult[key];
               if (kelas === data.kelas) {
                 return (
                   <View key={index}>

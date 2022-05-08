@@ -1,13 +1,9 @@
-import { DELETE_DATA, GET_DATA_SISWA, GET_DATA_GURU } from '../../actions/dataActions';
+import { DELETE_DATA, GET_DATA } from '../../actions/dataActions';
 
 const initialState = {
-  dataSiswaLoading: false,
-  dataSiswaResult: false,
-  dataSiswaError: false,
-
-  dataGuruLoading: false,
-  dataGuruResult: false,
-  dataGuruError: false,
+  dataLoading: false,
+  dataResult: false,
+  dataError: false,
 
   dataDeleteLoading: false,
   dataDeleteResult: false,
@@ -16,19 +12,12 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_DATA_SISWA:
+    case GET_DATA:
       return {
         ...state,
-        dataSiswaLoading: action.payload.loading,
-        dataSiswaResult: action.payload.data,
-        dataSiswaError: action.payload.errorMessage,
-      };
-    case GET_DATA_GURU:
-      return {
-        ...state,
-        dataGuruLoading: action.payload.loading,
-        dataGuruResult: action.payload.data,
-        dataGuruError: action.payload.errorMessage,
+        dataLoading: action.payload.loading,
+        dataResult: action.payload.data,
+        dataError: action.payload.errorMessage,
       };
     case DELETE_DATA:
       return {

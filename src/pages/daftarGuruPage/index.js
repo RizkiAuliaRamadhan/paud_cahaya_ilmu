@@ -12,7 +12,7 @@ import { Login, Tambah, Edit, Delete } from '../../assets/images';
 import { Modal, Portal, TextInput, Button } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
-import { DeleteData, getDataGuru } from '../../actions/dataActions';
+import { DeleteData, getData } from '../../actions/dataActions';
 
 const DaftarGuruPage = ({ navigation }) => {
   const [modal, setModal] = useState(false);
@@ -32,10 +32,10 @@ const DaftarGuruPage = ({ navigation }) => {
 
   const dispatch = useDispatch();
   const userReducerLoading = useSelector((state) => state.AuthReducer.registerLoading);
-  const dataGuruReducerResult = useSelector((state) => state.DataReducer.dataGuruResult);
+  const dataReducerResult = useSelector((state) => state.DataReducer.dataResult);
 
   useEffect(() => {
-    dispatch(getDataGuru());
+    dispatch(getData());
   }, []);
 
   const tambahData = () => {
@@ -50,7 +50,7 @@ const DaftarGuruPage = ({ navigation }) => {
         tgl,
         role: 'guru',
       };
-      dispatch(registerUser(datas, tgl, datas.role));
+      dispatch(registerUser(datas, tgl));
       setTimeout(() => {
         navigation.replace('AdminPage');
       }, 2000);
@@ -134,32 +134,34 @@ const DaftarGuruPage = ({ navigation }) => {
         </View>
         <View style={styles.body}>
           <ScrollView showsVerticalScrollIndicator={false}>
-            {Object.keys(dataGuruReducerResult).map((key, index) => {
-              const data = dataGuruReducerResult[key];
-              return (
-                <View key={index}>
-                  {/* Box */}
-                  <View style={styles.box}>
-                    <View style={styles.itemBox1}>
-                      <Text style={styles.itemTextBox1}>{data.nama}</Text>
-                      {/* <Text style={styles.itemTextBox1}>{data.tgl}</Text> */}
+            {Object.keys(dataReducerResult).map((key, index) => {
+              const data = dataReducerResult[key];
+              if (data.role === 'guru') {
+                return (
+                  <View key={index}>
+                    {/* Box */}
+                    <View style={styles.box}>
+                      <View style={styles.itemBox1}>
+                        <Text style={styles.itemTextBox1}>{data.nama}</Text>
+                        {/* <Text style={styles.itemTextBox1}>{data.tgl}</Text> */}
+                      </View>
+                      <View style={styles.itemBox2}>
+                        <View style={{ marginRight: 5 }} />
+                        {/* Butt0n Delete */}
+                        <TouchableOpacity
+                          onPress={() => {
+                            setHapus(true);
+                            setUid(key);
+                          }}
+                        >
+                          <Image source={Delete} />
+                        </TouchableOpacity>
+                      </View>
                     </View>
-                    <View style={styles.itemBox2}>
-                      <View style={{ marginRight: 5 }} />
-                      {/* Butt0n Delete */}
-                      <TouchableOpacity
-                        onPress={() => {
-                          setHapus(true);
-                          setUid(key);
-                        }}
-                      >
-                        <Image source={Delete} />
-                      </TouchableOpacity>
-                    </View>
+                    {/* enBox */}
                   </View>
-                  {/* enBox */}
-                </View>
-              );
+                );
+              }
             })}
           </ScrollView>
         </View>

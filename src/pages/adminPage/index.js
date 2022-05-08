@@ -3,18 +3,31 @@ import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from
 import { Arrow, Home, Login, Logo, Logout } from '../../assets/images';
 import LottieView from 'lottie-react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDataGuru, getDataSiswa } from '../../actions/dataActions';
+import { getData } from '../../actions/dataActions';
+import auth from '@react-native-firebase/auth';
+import { storeData } from '../../utils/localStorage';
+import { loginUser } from '../../actions/authActions';
 
 const AdminPage = ({ navigation }) => {
   const dispatch = useDispatch();
-  const dataGuruReducerResult = useSelector((state) => state.DataReducer.dataGuruResult);
-  const dataSiswaReducerResult = useSelector((state) => state.DataReducer.dataSiswaResult);
+  const dataReducerResult = useSelector((state) => state.DataReducer.dataResult);
   useEffect(() => {
-    dispatch(getDataGuru());
-    dispatch(getDataSiswa());
+    dispatch(getData());
   }, []);
-  const jumlahDataGuru = Object.keys(dataGuruReducerResult).length;
-  const jumlahDataSiswa = Object.keys(dataSiswaReducerResult).length;
+
+  const jumlahData = Object.keys(dataReducerResult).map((key) => dataReducerResult[key].role);
+
+  const jumlahGuru = jumlahData.filter((result) => result == 'guru');
+  const jumlahSiswa = jumlahData.filter((result) => result == 'siswa');
+
+  const logout = () => {
+    storeData(false);
+    dispatch(loginUser('', ''));
+    navigation.replace('LoginPage');
+  };
+  useEffect(() => {
+    console.log('logout');
+  }, [logout]);
 
   return (
     <View style={styles.container}>
@@ -23,7 +36,7 @@ const AdminPage = ({ navigation }) => {
           <TouchableOpacity onPress={() => navigation.navigate('HomePage')}>
             <Image source={Home} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => logout()}>
             <Image source={Logout} />
           </TouchableOpacity>
         </View>
@@ -54,7 +67,7 @@ const AdminPage = ({ navigation }) => {
                   Jumlah Siswa
                 </Text>
                 <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>
-                  {jumlahDataSiswa}
+                  {jumlahSiswa.length}
                 </Text>
               </View>
               <Image source={Arrow} style={{ marginRight: 20 }} />
@@ -82,7 +95,7 @@ const AdminPage = ({ navigation }) => {
                   Jumlah Guru
                 </Text>
                 <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold', marginLeft: -10 }}>
-                  {jumlahDataGuru}
+                  {jumlahGuru.length}
                 </Text>
               </View>
               <Image source={Arrow} style={{ marginRight: 20 }} />

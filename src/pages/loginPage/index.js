@@ -5,49 +5,47 @@ import * as Animatable from 'react-native-animatable';
 import { TextInput, Button, Checkbox, Colors } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../actions/userActions';
-import { getDataGuru, getDataSiswa } from '../../actions/dataActions';
+import { loginUser } from '../../actions/authActions';
+import { getData } from '../../utils/localStorage';
 
 const LoginPage = ({ navigation }) => {
   const [Nama, setNama] = useState('');
   const [Tgl, setTgl] = useState('');
-  const [loading, setLoading] = useState(false);
   const [hide, setHide] = useState(true);
   const [error, setError] = useState(false);
   const [textError, setTextError] = useState('');
 
   // reducer
   const dispatch = useDispatch();
-  const userReducer = useSelector((state) => state.UserReducer.dataUser);
-  const dataSiswaReducer = useSelector((state) => state.DataReducer.dataSiswaResult);
-  const dataGuruReducer = useSelector((state) => state.DataReducer.dataGuruResult);
-
-  let dataSiswa = {};
+  const dataUserReducer = useSelector((state) => state.AuthReducer.loginResult);
+  const loginReducerLoading = useSelector((state) => state.AuthReducer.loginLoading);
 
   useEffect(() => {
     dispatch(getUser());
-    dispatch(getDataSiswa());
-    dispatch(getDataGuru());
+    console.log(dataUserReducer);
   }, []);
 
   const login = () => {
-    // if (Nama == userReducer.Nama && Tgl == userReducer.Tgl) {
-    //   navigation.replace('AdminPage');
-    // } else {
-    //   console.log('login gagal');
-    //   if ((Nama === '') & (Tgl == '')) {
-    //     setTextError('Nama dan Tgl wajib diisi !');
-    //   } else {
-    //     setTextError('Nama dan Tgl tidak cocok !');
-    //   }
-    //   setError(true);
-    // }
-    Object.keys(dataSiswaReducer).map((key) => {
-      const data = dataSiswaReducer[key];
-      console.log(key);
-    });
-    const dataGuru = Object.keys(dataGuruReducer);
-    // console.log(dataSiswa.includes('b5E6IzWz4mTuUmRAgDxQJvfUTjQ2'));
+    if (Nama && Tgl) {
+      dispatch(loginUser(Nama, Tgl));
+    } else {
+      console.log('login gagal');
+      if ((Nama === '') & (Tgl == '')) {
+        setTextError('Nama dan Tgl wajib diisi !');
+      } else {
+        setTextError('Nama dan Tgl tidak cocok !');
+      }
+      setError(true);
+    }
   };
+
+  useEffect(() => {
+    if (dataUserReducer.role === 'siswa') {
+      navigation.replace('HomePage');
+    } else if (dataUserReducer.role === 'guru') {
+      navigation.replace('AdminPage');
+    }
+  }, [login]);
 
   return (
     <View style={styles.container}>
@@ -112,7 +110,7 @@ const LoginPage = ({ navigation }) => {
             onPress={() => {
               login();
             }}
-            loading={loading}
+            loading={loginReducerLoading}
             style={styles.button}
           >
             Masuk

@@ -1,38 +1,22 @@
 import { dispatchLoading, dispatchSuccess, dispatchError } from '../utils/dispatch';
 import database from '@react-native-firebase/database';
 
-export const GET_DATA_SISWA = 'GET_DATA_SISWA';
-export const GET_DATA_GURU = 'GET_DATA_GURU';
+export const GET_DATA = 'GET_DATA';
 
 export const DELETE_DATA = 'DELETE_DATA';
 
-export const getDataSiswa = () => {
+export const getData = () => {
   return (dispatch) => {
     // loading
-    dispatchLoading(dispatch, GET_DATA_SISWA);
+    dispatchLoading(dispatch, GET_DATA);
     // firebase
     database()
-      .ref('/siswa/')
+      .ref('/users/')
       .on('value', (snapshot) => {
         // hasil
         let data = snapshot.val() ? snapshot.val() : [];
         let dataItem = { ...data };
-        dispatchSuccess(dispatch, GET_DATA_SISWA, dataItem);
-      });
-  };
-};
-export const getDataGuru = () => {
-  return (dispatch) => {
-    // loading
-    dispatchLoading(dispatch, GET_DATA_GURU);
-    // firebase
-    database()
-      .ref('/guru/')
-      .on('value', (snapshot) => {
-        // hasil
-        let data = snapshot.val() ? snapshot.val() : [];
-        let dataItem = { ...data };
-        dispatchSuccess(dispatch, GET_DATA_GURU, dataItem);
+        dispatchSuccess(dispatch, GET_DATA, dataItem);
       });
   };
 };
@@ -43,7 +27,7 @@ export const DeleteData = (role, uid) => {
     dispatchLoading(dispatch, DELETE_DATA);
     // delete realtime database
     database()
-      .ref('/' + role + '/' + uid)
+      .ref('/users/' + uid)
       .remove();
     dispatchSuccess(dispatch, DELETE_DATA, null);
   };
