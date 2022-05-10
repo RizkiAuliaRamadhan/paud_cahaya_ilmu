@@ -44,6 +44,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
     } else {
       let email = nama + '@paudcahayailmu.com';
       email = email.replace(/\s/g, '');
+      email = email.toLowerCase;
       const datas = {
         email,
         nama,

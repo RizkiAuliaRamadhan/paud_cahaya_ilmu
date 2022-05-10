@@ -4,9 +4,9 @@ import { Arrow, Home, Login, Logo, Logout } from '../../assets/images';
 import LottieView from 'lottie-react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getData } from '../../actions/dataActions';
-import auth from '@react-native-firebase/auth';
 import { storeData } from '../../utils/localStorage';
 import { loginUser } from '../../actions/authActions';
+import { getAuth, signOut } from 'firebase/auth';
 
 const AdminPage = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -23,11 +23,17 @@ const AdminPage = ({ navigation }) => {
   const logout = () => {
     storeData(false);
     dispatch(loginUser('', ''));
-    navigation.replace('LoginPage');
+    const auth = getAuth();
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigation.replace('LoginPage');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-  useEffect(() => {
-    console.log('logout');
-  }, [logout]);
+  useEffect(() => {}, [logout]);
 
   return (
     <View style={styles.container}>

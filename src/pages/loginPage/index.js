@@ -27,7 +27,10 @@ const LoginPage = ({ navigation }) => {
 
   const login = () => {
     if (Nama && Tgl) {
-      dispatch(loginUser(Nama, Tgl));
+      let email = Nama;
+      email = email.replace(/\s/g, '');
+      email = email.toLowerCase();
+      dispatch(loginUser(email, Tgl));
     } else {
       console.log('login gagal');
       if ((Nama === '') & (Tgl == '')) {

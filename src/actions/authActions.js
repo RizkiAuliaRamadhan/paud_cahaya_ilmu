@@ -1,8 +1,8 @@
 import { dispatchError, dispatchLoading, dispatchSuccess } from '../utils/dispatch';
-import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import { getDatabase, ref, set } from 'firebase/database';
 import { storeData } from '../utils/localStorage';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
@@ -13,8 +13,8 @@ export const registerUser = (data, password) => {
     dispatchLoading(dispatch, REGISTER_USER);
     // firebase
     if ((data, password)) {
-      auth()
-        .createUserWithEmailAndPassword(data.email, password)
+      const auth = getAuth();
+      createUserWithEmailAndPassword(auth, data.email, password)
         .then((res) => {
           // ambil uid buat data baru
           let dataBaru = {
@@ -47,8 +47,8 @@ export const loginUser = (email, password) => {
       },
     });
     if ((email, password)) {
-      auth()
-        .signInWithEmailAndPassword(email + '@paudcahayailmu.com', password)
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, email + '@paudcahayailmu.com', password)
         .then((success) => {
           // Login
           database()
