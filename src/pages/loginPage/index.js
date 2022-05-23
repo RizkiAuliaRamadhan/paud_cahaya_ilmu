@@ -22,7 +22,6 @@ const LoginPage = ({ navigation }) => {
 
   useEffect(() => {
     dispatch(getUser());
-    console.log(dataUserReducer);
   }, []);
 
   const login = () => {

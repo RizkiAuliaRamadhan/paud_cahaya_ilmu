@@ -51,6 +51,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
         tgl,
         role: 'siswa',
         kelas,
+        bintang: 0,
       };
       dispatch(registerUser(datas, tgl));
       setTimeout(() => {

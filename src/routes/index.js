@@ -11,6 +11,7 @@ import {
   DaftarSiswaPage,
   DaftarGuruPage,
   RiwayatAdmin,
+  DetailAlquran,
 } from '../pages';
 
 const Stack = createNativeStackNavigator();
@@ -30,6 +31,7 @@ const Routes = () => {
         <Stack.Screen name="DaftarSiswaPage" component={DaftarSiswaPage} options={options} />
         <Stack.Screen name="DaftarGuruPage" component={DaftarGuruPage} options={options} />
         <Stack.Screen name="RiwayatAdmin" component={RiwayatAdmin} options={options} />
+        <Stack.Screen name="DetailAlquran" component={DetailAlquran} options={options} />
       </Stack.Navigator>
     </NavigationContainer>
   );

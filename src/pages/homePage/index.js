@@ -4,9 +4,18 @@ import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, Image } from
 import { Bg1, Doa, GreenGradient, Logo, Quran } from '../../assets/images';
 import LottieView from 'lottie-react-native';
 import * as Animatable from 'react-native-animatable';
+import { getData } from '../../utils/localStorage';
+import { getData as getDataUser } from '../../actions/dataActions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const HomePage = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
+  const [nama, setNama] = useState('');
+  const [uid, setUid] = useState('');
+  const [bintang, setBintang] = useState(0);
+
+  const dispatch = useDispatch();
+  const dataReducerResult = useSelector((state) => state.DataReducer.dataResult);
 
   useFocusEffect(
     useCallback(() => {
@@ -16,18 +25,38 @@ const HomePage = ({ navigation }) => {
     }, [navigation])
   );
 
+  useEffect(() => {
+    getData('user').then((res) => {
+      setNama(res.nama);
+      setUid(res.uid);
+    });
+    dispatch(getDataUser());
+  }, []);
+
+  useEffect(() => {
+    const dataSiswa = Object.keys(dataReducerResult).map((key) => {
+      if (uid === dataReducerResult[key].uid) {
+        setBintang(dataReducerResult[key].bintang);
+      } else {
+        setBintang(0);
+      }
+      return 0;
+    });
+    dataSiswa;
+  }, [dataReducerResult]);
+
   return (
     <View style={styles.container}>
       <ImageBackground source={Bg1} resizeMode="cover" style={styles.backgroundImage}>
         <Animatable.View
           style={styles.header}
           animation={visible ? 'fadeOutUp' : 'fadeInDown'}
-          duration={1500}
-          delay={1000}
+          duration={1200}
+          delay={500}
         >
           <View style={{ flexDirection: 'column' }}>
             <Text style={styles.text1}>Assalamu'alaikum</Text>
-            <Text style={styles.text1}>fulan</Text>
+            <Text style={styles.text1}>{nama}</Text>
           </View>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <LottieView
@@ -37,21 +66,21 @@ const HomePage = ({ navigation }) => {
               style={{ width: 50, height: 50 }}
             />
             <View style={{ paddingRight: 5 }} />
-            <Text style={styles.text1}>10</Text>
+            <Text style={styles.text1}>{bintang}</Text>
           </View>
         </Animatable.View>
         <View style={{ height: '85%', justifyContent: 'space-between' }}>
           <Animatable.View
             style={styles.logo}
             animation={visible ? 'fadeOut' : 'fadeIn'}
-            duration={1500}
+            duration={1200}
             delay={1000}
           >
             <Image source={Logo} style={{ width: 150, height: 150 }} />
           </Animatable.View>
           <Animatable.View
             animation={visible ? 'fadeOutDown' : 'fadeInUp'}
-            duration={1500}
+            duration={1200}
             delay={1000}
           >
             {/* button al quran */}
@@ -61,7 +90,7 @@ const HomePage = ({ navigation }) => {
                 setVisible(!visible);
                 setTimeout(() => {
                   navigation.navigate('AlQuran');
-                }, 1500);
+                }, 1200);
               }}
             >
               <Image source={GreenGradient} style={styles.backgroundButton} />

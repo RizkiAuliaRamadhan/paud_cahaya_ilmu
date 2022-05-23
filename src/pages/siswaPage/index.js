@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { Login } from '../../assets/images';
+import { useDispatch, useSelector } from 'react-redux';
 
 const SiswaPAge = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const dataReducerResult = useSelector((state) => state.DataReducer.dataResult);
+
+  const jumlahDataSiswaDetail = Object.keys(dataReducerResult).map(
+    (key) => dataReducerResult[key].kelas
+  );
+  const jumlahSiswaA = jumlahDataSiswaDetail.filter((result) => result == 'A');
+  const jumlahSiswaB = jumlahDataSiswaDetail.filter((result) => result == 'B');
+
   return (
     <View style={styles.container}>
       <ImageBackground source={Login} resizeMode="cover" style={styles.backgroundImage}>
@@ -15,7 +25,7 @@ const SiswaPAge = ({ navigation }) => {
         >
           <View style={styles.content1}>
             <Text style={styles.textButton}>Kelas A</Text>
-            {/* <Text style={styles.textButton}>16</Text> */}
+            <Text style={styles.textButton}>{jumlahSiswaA.length}</Text>
           </View>
         </TouchableOpacity>
         {/* button 1 */}
@@ -27,7 +37,7 @@ const SiswaPAge = ({ navigation }) => {
         >
           <View style={styles.content2}>
             <Text style={styles.textButton}>Kelas B</Text>
-            {/* <Text style={styles.textButton}>20</Text> */}
+            <Text style={styles.textButton}>{jumlahSiswaB.length}</Text>
           </View>
         </TouchableOpacity>
       </ImageBackground>
