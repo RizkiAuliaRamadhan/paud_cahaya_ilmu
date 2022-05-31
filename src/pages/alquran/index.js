@@ -66,7 +66,7 @@ const AlQuran = ({ navigation }) => {
                       onPress={() => {
                         setVisible(!visible);
                         setTimeout(() => {
-                          navigation.navigate('DetailAlquran', { data: juzAmma[index] });
+                          navigation.navigate('DetailAlquran', { dataQuran: juzAmma[index] });
                         }, 1200);
                       }}
                     >

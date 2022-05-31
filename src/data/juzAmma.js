@@ -3,6 +3,7 @@ const juzAmma = {
     number: '78',
     name: 'النبأ',
     name_latin: "An-Naba'",
+    file: 'annaba.mp3',
     number_of_ayah: '40',
     text: {
       1: 'عَمَّ يَتَسَاۤءَلُوْنَۚ ',
@@ -98,6 +99,7 @@ const juzAmma = {
     number: '79',
     name: 'النّٰزعٰت',
     name_latin: "An-Nazi'at",
+    file: 'annaziat.mp3',
     number_of_ayah: '46',
     text: {
       1: 'وَالنّٰزِعٰتِ غَرْقًاۙ',
@@ -205,6 +207,7 @@ const juzAmma = {
     number: '80',
     name: 'عبس',
     name_latin: "'Abasa",
+    file: 'abasa.mp3',
     number_of_ayah: '42',
     text: {
       1: 'عَبَسَ وَتَوَلّٰىٓۙ',
@@ -304,6 +307,7 @@ const juzAmma = {
     number: '81',
     name: 'التكوير',
     name_latin: 'At-Takwir',
+    file: 'attakwir.mp3',
     number_of_ayah: '29',
     text: {
       1: 'اِذَا الشَّمْسُ كُوِّرَتْۖ',
@@ -377,6 +381,7 @@ const juzAmma = {
     number: '82',
     name: 'الانفطار',
     name_latin: 'Al-Infitar',
+    file: 'alinfitar.mp3',
     number_of_ayah: '19',
     text: {
       1: 'اِذَا السَّمَاۤءُ انْفَطَرَتْۙ',
@@ -430,6 +435,7 @@ const juzAmma = {
     number: '83',
     name: 'المطفّفين',
     name_latin: 'Al-Mutaffifin',
+    file: 'almutaffifin.mp3',
     number_of_ayah: '36',
     text: {
       1: 'وَيْلٌ لِّلْمُطَفِّفِيْنَۙ',
@@ -517,6 +523,7 @@ const juzAmma = {
     number: '84',
     name: 'الانشقاق',
     name_latin: 'Al-Insyiqaq',
+    file: 'alinsyiqaq.mp3',
     number_of_ayah: '25',
     text: {
       1: 'اِذَا السَّمَاۤءُ انْشَقَّتْۙ ',
@@ -582,6 +589,7 @@ const juzAmma = {
     number: '85',
     name: 'البروج',
     name_latin: 'Al-Buruj',
+    file: 'alburuj.mp3',
     number_of_ayah: '22',
     text: {
       1: 'وَالسَّمَاۤءِ ذَاتِ الْبُرُوْجِۙ ',
@@ -641,6 +649,7 @@ const juzAmma = {
     number: '86',
     name: 'الطارق',
     name_latin: 'At-Tariq',
+    file: 'attariq.mp3',
     number_of_ayah: '17',
     text: {
       1: 'وَالسَّمَاۤءِ وَالطَّارِقِۙ ',
@@ -690,6 +699,7 @@ const juzAmma = {
     number: '87',
     name: 'الاعلى',
     name_latin: "Al-A'la",
+    file: 'alala.mp3',
     number_of_ayah: '19',
     text: {
       1: 'سَبِّحِ اسْمَ رَبِّكَ الْاَعْلَىۙ ',
@@ -743,6 +753,7 @@ const juzAmma = {
     number: '88',
     name: 'الغاشية',
     name_latin: 'Al-Gasyiyah',
+    file: 'alghasyiyah.mp3',
     number_of_ayah: '26',
     text: {
       1: 'هَلْ اَتٰىكَ حَدِيْثُ الْغَاشِيَةِۗ',
@@ -810,6 +821,7 @@ const juzAmma = {
     number: '89',
     name: 'الفجر',
     name_latin: 'Al-Fajr',
+    file: 'alfajr.mp3',
     number_of_ayah: '30',
     text: {
       1: 'وَالْفَجْرِۙ',
@@ -885,6 +897,7 @@ const juzAmma = {
     number: '90',
     name: 'البلد',
     name_latin: 'Al-Balad',
+    file: 'albalad.mp3',
     number_of_ayah: '20',
     text: {
       1: 'لَآ اُقْسِمُ بِهٰذَا الْبَلَدِۙ',
@@ -941,6 +954,7 @@ const juzAmma = {
     number: '91',
     name: 'الشمس',
     name_latin: 'Asy-Syams',
+    file: 'asysyams.mp3',
     number_of_ayah: '15',
     text: {
       1: 'وَالشَّمْسِ وَضُحٰىهَاۖ',
@@ -986,6 +1000,7 @@ const juzAmma = {
     number: '92',
     name: 'الّيل',
     name_latin: 'Al-Lail',
+    file: 'allail.mp3',
     number_of_ayah: '21',
     text: {
       1: 'وَالَّيْلِ اِذَا يَغْشٰىۙ',
@@ -1043,6 +1058,7 @@ const juzAmma = {
     number: '93',
     name: 'الضحى',
     name_latin: 'Ad-Duha',
+    file: 'adduha.mp3',
     number_of_ayah: '11',
     text: {
       1: 'وَالضُّحٰىۙ',
@@ -1111,6 +1127,7 @@ const juzAmma = {
     number: '95',
     name: 'التين',
     name_latin: 'At-Tin',
+    file: 'attin.mp3',
     number_of_ayah: '8',
     text: {
       1: 'وَالتِّيْنِ وَالزَّيْتُوْنِۙ',
@@ -1142,6 +1159,7 @@ const juzAmma = {
     number: '96',
     name: 'العلق',
     name_latin: "Al-'Alaq",
+    file: 'alalaq.mp3',
     number_of_ayah: '19',
     text: {
       1: 'اِقْرَأْ بِاسْمِ رَبِّكَ الَّذِيْ خَلَقَۚ',
@@ -1195,6 +1213,7 @@ const juzAmma = {
     number: '97',
     name: 'القدر',
     name_latin: 'Al-Qadr',
+    file: 'alqadr.mp3',
     number_of_ayah: '5',
     text: {
       1: 'اِنَّآ اَنْزَلْنٰهُ فِيْ لَيْلَةِ الْقَدْرِ ',
@@ -1220,6 +1239,7 @@ const juzAmma = {
     number: '98',
     name: 'البيّنة',
     name_latin: 'Al-Bayyinah',
+    file: 'albayyinah.mp3',
     number_of_ayah: '8',
     text: {
       1: 'لَمْ يَكُنِ الَّذِيْنَ كَفَرُوْا مِنْ اَهْلِ الْكِتٰبِ وَالْمُشْرِكِيْنَ مُنْفَكِّيْنَ حَتّٰى تَأْتِيَهُمُ الْبَيِّنَةُۙ',
@@ -1251,6 +1271,7 @@ const juzAmma = {
     number: '99',
     name: 'الزلزلة',
     name_latin: 'Az-Zalzalah',
+    file: 'azzalzalah.mp3',
     number_of_ayah: '8',
     text: {
       1: 'اِذَا زُلْزِلَتِ الْاَرْضُ زِلْزَالَهَاۙ',
@@ -1282,6 +1303,7 @@ const juzAmma = {
     number: '100',
     name: 'العٰديٰت',
     name_latin: "Al-'Adiyat",
+    file: 'aladiyat.mp3',
     number_of_ayah: '11',
     text: {
       1: 'وَالْعٰدِيٰتِ ضَبْحًاۙ ',
@@ -1319,6 +1341,7 @@ const juzAmma = {
     number: '101',
     name: 'القارعة',
     name_latin: "Al-Qari'ah",
+    file: 'alqariah.mp3',
     number_of_ayah: '11',
     text: {
       1: 'اَلْقَارِعَةُۙ',
@@ -1356,6 +1379,7 @@ const juzAmma = {
     number: '102',
     name: 'التكاثر',
     name_latin: 'At-Takasur',
+    file: 'attakasur.mp3',
     number_of_ayah: '8',
     text: {
       1: 'اَلْهٰىكُمُ التَّكَاثُرُۙ',
@@ -1387,6 +1411,7 @@ const juzAmma = {
     number: '103',
     name: 'العصر',
     name_latin: "Al-'Asr",
+    file: 'alasr.mp3',
     number_of_ayah: '3',
     text: {
       1: 'وَالْعَصْرِۙ',
@@ -1408,6 +1433,7 @@ const juzAmma = {
     number: '104',
     name: 'الهمزة',
     name_latin: 'Al-Humazah',
+    file: 'alhumazah.mp3',
     number_of_ayah: '9',
     text: {
       1: 'وَيْلٌ لِّكُلِّ هُمَزَةٍ لُّمَزَةٍۙ',
@@ -1441,6 +1467,7 @@ const juzAmma = {
     number: '105',
     name: 'الفيل',
     name_latin: 'Al-Fil',
+    file: 'alfil.mp3',
     number_of_ayah: '5',
     text: {
       1: 'اَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِاَصْحٰبِ الْفِيْلِۗ',
@@ -1466,6 +1493,7 @@ const juzAmma = {
     number: '106',
     name: 'قريش',
     name_latin: 'Quraisy',
+    file: 'quraisy.mp3',
     number_of_ayah: '4',
     text: {
       1: 'لِاِيْلٰفِ قُرَيْشٍۙ',
@@ -1489,6 +1517,7 @@ const juzAmma = {
     number: '107',
     name: 'الماعون',
     name_latin: "Al-Ma'un",
+    file: 'almaun.mp3',
     number_of_ayah: '7',
     text: {
       1: 'اَرَءَيْتَ الَّذِيْ يُكَذِّبُ بِالدِّيْنِۗ',
@@ -1518,6 +1547,7 @@ const juzAmma = {
     number: '108',
     name: 'الكوثر',
     name_latin: 'Al-Kausar',
+    file: 'alkausar.mp3',
     number_of_ayah: '3',
     text: {
       1: 'اِنَّآ اَعْطَيْنٰكَ الْكَوْثَرَۗ',
@@ -1539,6 +1569,7 @@ const juzAmma = {
     number: '109',
     name: 'الكٰفرون',
     name_latin: 'Al-Kafirun',
+    file: 'alkafirun.mp3',
     number_of_ayah: '6',
     text: {
       1: 'قُلْ يٰٓاَيُّهَا الْكٰفِرُوْنَۙ',
@@ -1567,6 +1598,7 @@ const juzAmma = {
     number: '110',
     name: 'النصر',
     name_latin: 'An-Nasr',
+    file: 'annasr.mp3',
     number_of_ayah: '3',
     text: {
       1: 'اِذَا جَاۤءَ نَصْرُ اللّٰهِ وَالْفَتْحُۙ',
@@ -1588,6 +1620,7 @@ const juzAmma = {
     number: '111',
     name: 'اللهب',
     name_latin: 'Al-Lahab',
+    file: 'allahab.mp3',
     number_of_ayah: '5',
     text: {
       1: 'تَبَّتْ يَدَآ اَبِيْ لَهَبٍ وَّتَبَّۗ',
@@ -1613,6 +1646,7 @@ const juzAmma = {
     number: '112',
     name: 'الاخلاص',
     name_latin: 'Al-Ikhlas',
+    file: 'alikhlas.mp3',
     number_of_ayah: '4',
     text: {
       1: 'قُلْ هُوَ اللّٰهُ اَحَدٌۚ',
@@ -1636,6 +1670,7 @@ const juzAmma = {
     number: '113',
     name: 'الفلق',
     name_latin: 'Al-Falaq',
+    file: 'alfalaq.mp3',
     number_of_ayah: '5',
     text: {
       1: 'قُلْ اَعُوْذُ بِرَبِّ الْفَلَقِۙ',
@@ -1661,6 +1696,7 @@ const juzAmma = {
     number: '114',
     name: 'الناس',
     name_latin: 'An-Nas',
+    file: 'annas.mp3',
     number_of_ayah: '6',
     text: {
       1: 'قُلْ اَعُوْذُ بِرَبِّ النَّاسِۙ',
@@ -1688,6 +1724,7 @@ const juzAmma = {
     number: '1',
     name: 'الفاتحة',
     name_latin: 'Al-Fatihah',
+    file: 'alfatihah.mp3',
     number_of_ayah: '7',
     text: {
       1: 'بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ',

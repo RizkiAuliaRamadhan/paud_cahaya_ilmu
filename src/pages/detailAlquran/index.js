@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -10,16 +10,34 @@ import {
 } from 'react-native';
 import { Bg1, Back2, Pause, Play, Rekam } from '../../assets/images';
 import { responsiveHeight, responsiveWidth } from '../../utils/responsive';
+import useSound from 'react-native-use-sound';
+import AlQuran from '../../components/AlQuran';
 
 const DetailAlquran = ({ route, navigation }) => {
-  let { data } = route.params;
-  const ayat = data.text;
-  const arti = data.translations.id.text;
+  const [isPlayingg, setIsPlayingg] = useState(true);
+
+  let { dataQuran } = route.params;
+  const ayat = dataQuran.text;
+  const arti = dataQuran.translations.id.text;
+
+  const coolMusic = dataQuran.file;
+  const [play, pause, stop, data] = useSound(coolMusic);
+
+  const playPause = () => {
+    if (data.isPlaying) pause();
+    else play();
+  };
+
+  useEffect(() => {
+    setIsPlayingg(!isPlayingg);
+  }, [data.isPlaying]);
+
   return (
     <View style={styles.container}>
       <ImageBackground source={Bg1} resizeMode="cover" style={styles.backgroundImage}>
         <TouchableOpacity
           onPress={() => {
+            stop();
             navigation.navigate('AlQuran');
           }}
         >
@@ -28,35 +46,52 @@ const DetailAlquran = ({ route, navigation }) => {
         <View style={{ alignItems: 'center', height: '10%' }}>
           <View style={styles.cardHeader}>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={styles.textcardHeader}>{data.number}</Text>
+              <Text style={styles.textcardHeader}>{dataQuran.number}</Text>
             </View>
             <View style={styles.wrapTitle}>
-              <Text style={styles.title}>{data.name_latin}</Text>
-              <Text style={styles.subTitle}>{data.translations.id.name}</Text>
+              <Text style={styles.title}>{dataQuran.name_latin}</Text>
+              <Text style={styles.subTitle}>{dataQuran.translations.id.name}</Text>
             </View>
           </View>
         </View>
         <ScrollView style={{ height: '77%', marginTop: 20 }}>
           {Object.keys(ayat).map((index) => {
             return (
-              <View style={styles.cardBody} key={index}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                  <TouchableOpacity>
-                    <Image source={Pause} />
-                  </TouchableOpacity>
-                </View>
-                <View style={styles.wrapAyatArti}>
-                  <View style={styles.ayat}>
-                    <Text style={styles.textAyat}>{ayat[index]}</Text>
-                  </View>
-                  <View style={styles.arti}>
-                    <Text style={styles.textArti}>
-                      {index}. {arti[index]}
-                    </Text>
-                  </View>
-                </View>
-              </View>
+              <AlQuran
+                dataAyat={ayat}
+                dataArti={arti}
+                index={index}
+                key={index}
+                play={play}
+                pause={pause}
+                data={data}
+              />
             );
+            // return (
+            //   <View style={styles.cardBody} key={index}>
+            //     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            //       <TouchableOpacity
+            //         style={{ width: 25, height: 25 }}
+            //         onPress={() => {
+            //           play();
+            //           data.seek(7.2);
+            //         }}
+            //       >
+            //         <Image source={Play} />
+            //       </TouchableOpacity>
+            //     </View>
+            //     <View style={styles.wrapAyatArti}>
+            //       <View style={styles.ayat}>
+            //         <Text style={styles.textAyat}>{ayat[index]}</Text>
+            //       </View>
+            //       <View style={styles.arti}>
+            //         <Text style={styles.textArti}>
+            //           {index}. {arti[index]}
+            //         </Text>
+            //       </View>
+            //     </View>
+            //   </View>
+            // );
           })}
         </ScrollView>
         <View
@@ -68,12 +103,17 @@ const DetailAlquran = ({ route, navigation }) => {
             justifyContent: 'space-around',
           }}
         >
-          <TouchableOpacity style={styles.buttonFooter1}>
-            <Image source={Play} />
+          <TouchableOpacity
+            style={!isPlayingg ? styles.buttonFooterplay : styles.buttonFooterpause}
+            onPress={() => {
+              playPause();
+            }}
+          >
+            <Image source={!isPlayingg ? Play : Pause} />
             <View style={{ width: responsiveWidth(20) }} />
-            <Text style={styles.textButtonFooter}>Play</Text>
+            <Text style={styles.textButtonFooter}>{!isPlayingg ? 'Play' : 'Pause'}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonFooter2}>
+          <TouchableOpacity style={styles.buttonFooter2} onPress={() => {}}>
             <Image source={Rekam} />
             <View style={{ width: responsiveWidth(20) }} />
             <Text style={styles.textButtonFooter}>Rekam</Text>
@@ -139,52 +179,21 @@ const styles = StyleSheet.create({
     color: '#eee',
     fontWeight: '500',
   },
-  cardBody: {
-    flexDirection: 'row',
-    // padding: 5,
-    backgroundColor: '#BB495E',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 4.65,
-
-    elevation: 8,
-    marginBottom: 20,
-  },
-  wrapAyatArti: {
-    flex: 5,
-  },
-  ayat: {
-    backgroundColor: '#EE6969',
-    padding: 7,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 10,
-  },
-  arti: {
-    backgroundColor: '#DBDBDB',
-    padding: 7,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 10,
-  },
-  textAyat: {
-    fontSize: 22,
-    color: '#fff',
-    fontWeight: '700',
-  },
-  textArti: {
-    fontSize: 14,
-    color: '#000',
-    fontWeight: '700',
-  },
-  buttonFooter1: {
+  buttonFooterplay: {
     flexDirection: 'row',
     width: responsiveWidth(155),
     paddingLeft: 20,
     backgroundColor: '#32CD32',
+    borderRadius: 10,
+    height: responsiveHeight(55),
+    alignItems: 'center',
+    // justifyContent: 'center',
+  },
+  buttonFooterpause: {
+    flexDirection: 'row',
+    width: responsiveWidth(155),
+    paddingLeft: 20,
+    backgroundColor: 'red',
     borderRadius: 10,
     height: responsiveHeight(55),
     alignItems: 'center',
