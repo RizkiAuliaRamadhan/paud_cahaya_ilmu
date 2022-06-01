@@ -67,31 +67,6 @@ const DetailAlquran = ({ route, navigation }) => {
                 data={data}
               />
             );
-            // return (
-            //   <View style={styles.cardBody} key={index}>
-            //     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            //       <TouchableOpacity
-            //         style={{ width: 25, height: 25 }}
-            //         onPress={() => {
-            //           play();
-            //           data.seek(7.2);
-            //         }}
-            //       >
-            //         <Image source={Play} />
-            //       </TouchableOpacity>
-            //     </View>
-            //     <View style={styles.wrapAyatArti}>
-            //       <View style={styles.ayat}>
-            //         <Text style={styles.textAyat}>{ayat[index]}</Text>
-            //       </View>
-            //       <View style={styles.arti}>
-            //         <Text style={styles.textArti}>
-            //           {index}. {arti[index]}
-            //         </Text>
-            //       </View>
-            //     </View>
-            //   </View>
-            // );
           })}
         </ScrollView>
         <View

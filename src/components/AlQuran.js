@@ -1,17 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Pause, Play } from '../assets/images';
-import useSound from 'react-native-use-sound';
 
 const AlQuran = ({ dataAyat, dataArti, index, play, pause, data }) => {
   const [playing, setPlaying] = useState(false);
-
-  //   const coolMusic = dataFile;
-  //   const [play, pause, stop, data] = useSound(coolMusic);
-  //   const playPause = () => {
-  //     if (data.isPlaying) pause();
-  //     else play();
-  //   };
 
   return (
     <View style={styles.cardBody}>
@@ -21,7 +13,7 @@ const AlQuran = ({ dataAyat, dataArti, index, play, pause, data }) => {
           onPress={() => {
             setPlaying(!playing);
             if (!playing) {
-              data.seek(9);
+              data.seek(64);
               //   data.duration(5);
               play();
             } else {
