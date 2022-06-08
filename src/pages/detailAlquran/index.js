@@ -19,6 +19,7 @@ const DetailAlquran = ({ route, navigation }) => {
   let { dataQuran } = route.params;
   const ayat = dataQuran.text;
   const arti = dataQuran.translations.id.text;
+  const audio = dataQuran.audio;
 
   const coolMusic = dataQuran.file;
   const [play, pause, stop, data] = useSound(coolMusic);
@@ -60,10 +61,12 @@ const DetailAlquran = ({ route, navigation }) => {
               <AlQuran
                 dataAyat={ayat}
                 dataArti={arti}
+                audio={audio}
                 index={index}
                 key={index}
                 play={play}
                 pause={pause}
+                stop={stop}
                 data={data}
               />
             );

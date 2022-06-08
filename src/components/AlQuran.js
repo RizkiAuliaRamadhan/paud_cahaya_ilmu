@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Pause, Play } from '../assets/images';
 
-const AlQuran = ({ dataAyat, dataArti, index, play, pause, data }) => {
+const AlQuran = ({ dataAyat, dataArti, audio, index, play, pause, stop, data }) => {
   const [playing, setPlaying] = useState(false);
-
+  const start = audio[index];
   return (
     <View style={styles.cardBody}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -12,9 +12,9 @@ const AlQuran = ({ dataAyat, dataArti, index, play, pause, data }) => {
           style={{ width: 25, height: 25 }}
           onPress={() => {
             setPlaying(!playing);
+
             if (!playing) {
-              data.seek(64);
-              //   data.duration(5);
+              data.seek(start);
               play();
             } else {
               pause();
