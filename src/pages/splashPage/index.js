@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { Doa, Login, Logo } from '../../assets/images';
 import * as Animatable from 'react-native-animatable';
 import { getData } from '../../utils/localStorage';
+import { responsiveHeight, responsiveWidth } from '../../utils/responsive';
 
 const SplashPage = ({ navigation }) => {
   const cek = () => {
@@ -37,7 +38,7 @@ const SplashPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={Login} resizeMode="cover" style={styles.backgroundImage}>
-        <Animatable.Image source={Logo} animation="zoomIn"></Animatable.Image>
+        <Animatable.Image source={Logo} style={styles.logo} animation="zoomIn"></Animatable.Image>
       </ImageBackground>
     </View>
   );
@@ -51,6 +52,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  logo: {
+    width: responsiveWidth(150),
+    height: responsiveHeight(140),
   },
 });
 

@@ -12,9 +12,21 @@ import { Bg1, Back2, Pause, Play, Rekam } from '../../assets/images';
 import { responsiveHeight, responsiveWidth } from '../../utils/responsive';
 import useSound from 'react-native-use-sound';
 import AlQuran from '../../components/AlQuran';
+import { Modal, Portal, Button, Provider } from 'react-native-paper';
+import RekamModal from '../../components/RekamModal';
+import AudioRecorderPlayer from 'react-native-audio-recorder-player';
+import LottieView from 'lottie-react-native';
+
+const audioRecorderPlayer = new AudioRecorderPlayer();
 
 const DetailAlquran = ({ route, navigation }) => {
   const [isPlayingg, setIsPlayingg] = useState(true);
+
+  // modal
+  const [visible, setVisible] = useState(false);
+
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
 
   let { dataQuran } = route.params;
   const ayat = dataQuran.text;
@@ -32,6 +44,17 @@ const DetailAlquran = ({ route, navigation }) => {
   useEffect(() => {
     setIsPlayingg(!isPlayingg);
   }, [data.isPlaying]);
+
+  const onStopRecord = async () => {
+    const result = await audioRecorderPlayer.stopRecorder();
+    audioRecorderPlayer.removeRecordBackListener();
+    console.log(result);
+  };
+
+  useEffect(() => {
+    onStopRecord();
+    console.log('visible');
+  }, [visible]);
 
   return (
     <View style={styles.container}>
@@ -55,6 +78,12 @@ const DetailAlquran = ({ route, navigation }) => {
             </View>
           </View>
         </View>
+        {/* modal rekam */}
+        <Portal>
+          <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
+            <RekamModal audioRecorderPlayer={audioRecorderPlayer} />
+          </Modal>
+        </Portal>
         <ScrollView style={{ height: '77%', marginTop: 20 }}>
           {Object.keys(ayat).map((index) => {
             return (
@@ -91,7 +120,7 @@ const DetailAlquran = ({ route, navigation }) => {
             <View style={{ width: responsiveWidth(20) }} />
             <Text style={styles.textButtonFooter}>{!isPlayingg ? 'Play' : 'Pause'}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonFooter2} onPress={() => {}}>
+          <TouchableOpacity style={styles.buttonFooter2} onPress={() => showModal()}>
             <Image source={Rekam} />
             <View style={{ width: responsiveWidth(20) }} />
             <Text style={styles.textButtonFooter}>Rekam</Text>
@@ -116,7 +145,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   cardHeader: {
-    // padding: 10,
     backgroundColor: '#DBDBDB',
     width: '50%',
     flexDirection: 'row',
@@ -193,5 +221,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
+const containerStyle = {
+  backgroundColor: 'white',
+  // padding: 20,
+  marginHorizontal: 10,
+  borderRadius: 15,
+};
 
 export default DetailAlquran;

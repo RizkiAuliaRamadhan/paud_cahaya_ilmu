@@ -154,7 +154,7 @@ const DaftarGuruPage = ({ navigation }) => {
                             setUid(key);
                           }}
                         >
-                          <Image source={Delete} />
+                          <Image source={Delete} style={{ width: 25, height: 25 }} />
                         </TouchableOpacity>
                       </View>
                     </View>

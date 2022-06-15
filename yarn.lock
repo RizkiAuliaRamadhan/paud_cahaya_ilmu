@@ -1956,6 +1956,11 @@
   dependencies:
     "@types/yargs-parser" "*"
 
+"@use-it/interval@^0.1.3":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@use-it/interval/-/interval-0.1.4.tgz#bcb862665796cd675d3e8a6d7ac458f9cefe8b16"
+  integrity sha512-ZjBRc7BTVpcoDPxupiCiA0vKicrjYVIq7AMwwBbg1w5ogKVXU60BZDpFkJK62sHzC/LeyT2QZMjdRZkoxMGf9g==
+
 "@xmldom/xmldom@~0.7.0":
   version "0.7.5"
   resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.5.tgz#09fa51e356d07d0be200642b0e4f91d8e6dd408d"
@@ -3077,6 +3082,11 @@ domexception@^2.0.1:
   integrity sha512-yxJ2mFy/sibVQlu5qHjOkf9J3K6zgmCxgJ94u2EdvDOV09H+32LtRswEcUsmUWN72pVLOEnTSRaIVVzVQgS0dg==
   dependencies:
     webidl-conversions "^5.0.0"
+
+dooboolab-welcome@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/dooboolab-welcome/-/dooboolab-welcome-1.3.2.tgz#4928595312f0429b4ea1b485ba8767bae6acdab7"
+  integrity sha512-2NbMaIIURElxEf/UAoVUFlXrO+7n/FRhLCiQlk4fkbGRh9cJ3/f8VEMPveR9m4Ug2l2Zey+UCXjd6EcBqHJ5bw==
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -6365,6 +6375,13 @@ react-native-animatable@^1.3.3:
   dependencies:
     prop-types "^15.7.2"
 
+react-native-audio-recorder-player@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-audio-recorder-player/-/react-native-audio-recorder-player-3.5.1.tgz#81be40bafaf61aaa2cbbb5c6ff0438b29691da9f"
+  integrity sha512-CRodnMFbZ3y61/lQ1dFYYZAQHHj0FK2q/gbPj8OnEEfwYO3V9Z/nTFZxQBUn3NRVomK8Cd78y099yd43DK7KEw==
+  dependencies:
+    dooboolab-welcome "^1.3.2"
+
 react-native-codegen@^0.0.13:
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/react-native-codegen/-/react-native-codegen-0.0.13.tgz#4cc94546fc75a5dbe9350d59c10108f2efe6bc17"
@@ -6394,6 +6411,11 @@ react-native-paper@^4.12.0:
     color "^3.1.2"
     react-native-iphone-x-helper "^1.3.1"
 
+react-native-permissions@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.3.1.tgz#8a359d9c0531afcde2f642a459b48c4c1e3e8f2d"
+  integrity sha512-Ap9nVWBWJ7lyU6Ye3Qltm2V+Ut6XjDcs+6ZBmK1UUxcCoSSGx/mQg2GbMJLjlnoVtUgVHR3IhyZ0mN9DlMPRFQ==
+
 react-native-safe-area-context@^4.2.4:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.2.4.tgz#4df42819759c4d3c74252c8678c2772cfa2271a6"
@@ -6413,6 +6435,18 @@ react-native-screens@^3.13.1:
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
+
+react-native-sound@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.11.2.tgz#e542dc5b9e16ab4b3ac7e6eaddb1fc8d98da9038"
+  integrity sha512-LmGc8lgOK3qecYMVQpyHvww/C+wgT6sWeMpVbOe4NCRGC2yKd4fo4U0KBUo9PO7AqKESO3I/2GZg1/C0+bwiiA==
+
+react-native-use-sound@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-use-sound/-/react-native-use-sound-1.2.1.tgz#d79e2c7856bcea36f9ff5fec5258d31904cc3206"
+  integrity sha512-jpA+Mh0daK+P9RZuzzAW0+ef3og1iqR9UKglE5oQdbn0S7O0rerU2Gzn9YrxQ88F3Dv8TK9cplNjoVqsJ4Pdhw==
+  dependencies:
+    "@use-it/interval" "^0.1.3"
 
 react-native-vector-icons@^9.1.0:
   version "9.1.0"

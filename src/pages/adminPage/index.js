@@ -7,6 +7,7 @@ import { getData } from '../../actions/dataActions';
 import { storeData } from '../../utils/localStorage';
 import { loginUser } from '../../actions/authActions';
 import { getAuth, signOut } from 'firebase/auth';
+import { responsiveHeight, responsiveWidth } from '../../utils/responsive';
 
 const AdminPage = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -40,15 +41,18 @@ const AdminPage = ({ navigation }) => {
       <ImageBackground source={Login} style={styles.imageBackground}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.navigate('HomePage')}>
-            <Image source={Home} />
+            <Image source={Home} style={{ height: 35, width: 35 }} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => logout()}>
-            <Image source={Logout} />
+            <Image source={Logout} style={{ height: 35, width: 35 }} />
           </TouchableOpacity>
         </View>
         <View style={styles.body}>
           <View style={{ alignItems: 'center' }}>
-            <Image source={Logo} />
+            <Image
+              source={Logo}
+              style={{ width: responsiveWidth(140), height: responsiveHeight(150) }}
+            />
           </View>
           <View style={{}}>
             {/* button1 */}

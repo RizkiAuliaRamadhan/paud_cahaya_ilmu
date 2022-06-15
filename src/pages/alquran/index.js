@@ -74,8 +74,8 @@ const AlQuran = ({ navigation }) => {
                         source={backGroundImages[rndInt]}
                         style={{
                           height: responsiveHeight(70),
-                          width: responsiveWidth(157),
-                          marginBottom: 25,
+                          width: responsiveWidth(165),
+                          marginBottom: 20,
                         }}
                       >
                         <View style={styles.card}>
@@ -107,8 +107,8 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 15,
   },
   body: {},
   row: {
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   card: {
-    height: 75,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -127,10 +126,12 @@ const styles = StyleSheet.create({
   number: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#000',
   },
   nameLatin: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: '#000',
   },
   terjemah: {
     fontSize: 10,

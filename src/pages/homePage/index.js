@@ -7,6 +7,7 @@ import * as Animatable from 'react-native-animatable';
 import { getData } from '../../utils/localStorage';
 import { getData as getDataUser } from '../../actions/dataActions';
 import { useDispatch, useSelector } from 'react-redux';
+import { responsiveHeight, responsiveWidth } from '../../utils/responsive';
 
 const HomePage = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
@@ -76,7 +77,10 @@ const HomePage = ({ navigation }) => {
             duration={1200}
             delay={1000}
           >
-            <Image source={Logo} style={{ width: 150, height: 150 }} />
+            <Image
+              source={Logo}
+              style={{ width: responsiveWidth(150), height: responsiveHeight(140) }}
+            />
           </Animatable.View>
           <Animatable.View
             animation={visible ? 'fadeOutDown' : 'fadeInUp'}
@@ -102,7 +106,7 @@ const HomePage = ({ navigation }) => {
                   useNativeDriver
                   direction="alternate"
                 ></Animatable.Image>
-                <View style={{ marginLeft: 40 }} />
+                <View style={{ marginLeft: 35 }} />
                 <Text style={styles.textButton}>Al Quran</Text>
               </View>
             </TouchableOpacity>
@@ -169,12 +173,12 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
-    height: 90,
+    height: responsiveHeight(90),
     // marginTop: 50,
   },
   backgroundButton: {
     width: '100%',
-    height: 90,
+    height: responsiveHeight(90),
     borderRadius: 10,
     display: 'flex',
   },
@@ -183,7 +187,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     left: 20,
-    top: 5,
+    top: 0,
   },
   contentButton2: {
     position: 'absolute',
@@ -196,7 +200,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: '#000',
     fontWeight: 'bold',
-    marginTop: 5,
+    // marginTop: 5,
   },
 });
 

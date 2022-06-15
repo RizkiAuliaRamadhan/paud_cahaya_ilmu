@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { Login, Logo } from '../../assets/images';
 import * as Animatable from 'react-native-animatable';
-import { TextInput, Button, Checkbox, Colors } from 'react-native-paper';
+import { Button, Checkbox, Colors, TextInput } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../actions/userActions';
 import { loginUser } from '../../actions/authActions';
@@ -66,7 +66,9 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             mode="outlined"
             theme={{ roundness: 25 }}
-            label="Nama Siswa"
+            // label="Nama Siswa"
+            placeholder="Nama Siswa"
+            placeholderTextColor="#999"
             value={Nama}
             onChangeText={(value) => setNama(value)}
             outlineColor="#1E40AF"
@@ -80,12 +82,14 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             mode="outlined"
             theme={{ roundness: 25 }}
-            label="Password"
+            // label="Password"
             placeholder="Tanggal Lahir"
+            placeholderTextColor="#999"
             value={Tgl}
             onChangeText={(value) => setTgl(value)}
             outlineColor="#1E40AF"
             activeOutlineColor="#1E40AF"
+            selectionColor="#1E40AF"
             secureTextEntry={hide}
             error={error}
             right={
@@ -112,6 +116,7 @@ const LoginPage = ({ navigation }) => {
             onPress={() => {
               login();
             }}
+            labelStyle={{ color: '#fff' }}
             loading={loginReducerLoading}
             style={styles.button}
           >

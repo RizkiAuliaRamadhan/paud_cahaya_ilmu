@@ -19,10 +19,16 @@ const DaftarSiswaPage = ({ route, navigation }) => {
 
   const [modal, setModal] = React.useState(false);
   const showModal = () => setModal(true);
-  const hideModal = () => setModal(false);
+  const hideModal = () => {
+    setModal(false);
+    setError(false);
+    setNama('');
+    setTgl('');
+  };
 
   const [tambah, setTambah] = useState(true);
   const [hapus, setHapus] = useState(false);
+  const [error, setError] = useState(false);
 
   const [nama, setNama] = useState('');
   const [tgl, setTgl] = useState('');
@@ -95,7 +101,8 @@ const DaftarSiswaPage = ({ route, navigation }) => {
               <View style={{ marginBottom: 25 }} />
               <TextInput
                 mode="outlined"
-                label="Nama"
+                placeholder="Nama"
+                placeholderTextColor="#999"
                 value={nama}
                 onChangeText={(value) => setNama(value)}
                 outlineColor="#1E40AF"
@@ -105,7 +112,50 @@ const DaftarSiswaPage = ({ route, navigation }) => {
               <View style={{ marginBottom: 20 }} />
               <TextInput
                 mode="outlined"
-                label="Password"
+                placeholder="Tanggal Lahir"
+                placeholderTextColor="#999"
+                value={tgl}
+                onChangeText={(value) => setTgl(value)}
+                outlineColor="#1E40AF"
+                activeOutlineColor="#1E40AF"
+                style={styles.input}
+              />
+              <View style={{ marginTop: 10 }}>
+                <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
+                <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 5 }}>28032017</Text>
+              </View>
+              {error && (
+                <Text style={{ color: 'red', marginBottom: 15 }}>Nama dan Tanggal harus diisi</Text>
+              )}
+              <Button
+                mode="contained"
+                theme={{ roundness: 50 }}
+                loading={userReducerLoading}
+                style={styles.button}
+                onPress={() => tambahData()}
+                labelStyle={{ color: '#fff' }}
+              >
+                Tambah
+              </Button>
+            </View>
+          ) : (
+            // Edit Data
+            <View>
+              <Text style={styles.titleModal}>Edit Data</Text>
+              <Text style={styles.titleModal}>Kelas {kelas}</Text>
+              <View style={{ marginBottom: 25 }} />
+              <TextInput
+                mode="outlined"
+                placeholder="Nama"
+                value={nama}
+                onChangeText={(value) => setNama(value)}
+                outlineColor="#1E40AF"
+                activeOutlineColor="#1E40AF"
+                style={styles.input}
+              />
+              <View style={{ marginBottom: 20 }} />
+              <TextInput
+                mode="outlined"
                 placeholder="Tanggal Lahir"
                 value={tgl}
                 onChangeText={(value) => setTgl(value)}
@@ -120,52 +170,14 @@ const DaftarSiswaPage = ({ route, navigation }) => {
               <Button
                 mode="contained"
                 theme={{ roundness: 50 }}
-                loading={userReducerLoading}
+                loading={loading}
                 style={styles.button}
-                onPress={() => tambahData()}
+                onPress={() => {}}
+                labelStyle={{ color: '#fff' }}
               >
-                Tambah
+                Edit
               </Button>
             </View>
-          ) : (
-            ''
-            // <View>
-            //   <Text style={styles.titleModal}>Edit Data</Text>
-            //   <Text style={styles.titleModal}>Kelas {kelas}</Text>
-            //   <View style={{ marginBottom: 25 }} />
-            //   <TextInput
-            //     mode="outlined"
-            //     label="Nama"
-            //     value={nama}
-            //     onChangeText={(value) => setNama(value)}
-            //     outlineColor="#1E40AF"
-            //     activeOutlineColor="#1E40AF"
-            //     style={styles.input}
-            //   />
-            //   <View style={{ marginBottom: 20 }} />
-            //   <TextInput
-            //     mode="outlined"
-            //     label="Tanggal Lahir"
-            //     value={tgl}
-            //     onChangeText={(value) => setTgl(value)}
-            //     outlineColor="#1E40AF"
-            //     activeOutlineColor="#1E40AF"
-            //     style={styles.input}
-            //   />
-            //   <View style={{ marginTop: 10 }}>
-            //     <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
-            //     <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 20 }}>28032017</Text>
-            //   </View>
-            //   <Button
-            //     mode="contained"
-            //     theme={{ roundness: 50 }}
-            //     loading={loading}
-            //     style={styles.button}
-            //     onPress={() => {}}
-            //   >
-            //     Edit
-            //   </Button>
-            // </View>
           )}
         </Modal>
       </Portal>
@@ -188,6 +200,17 @@ const DaftarSiswaPage = ({ route, navigation }) => {
                       </View>
                       <View style={styles.itemBox2}>
                         <View style={{ marginRight: 5 }} />
+                        {/* button Edit */}
+                        <TouchableOpacity
+                          onPress={() => {
+                            setTambah(false);
+                            showModal();
+                            setNama(data.nama);
+                            setTgl(data.tgl);
+                          }}
+                        >
+                          <Image source={Edit} style={{ height: 25, width: 25 }} />
+                        </TouchableOpacity>
                         {/* Butt0n Delete */}
                         <TouchableOpacity
                           onPress={() => {
@@ -195,7 +218,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
                             setUid(key);
                           }}
                         >
-                          <Image source={Delete} />
+                          <Image source={Delete} style={{ height: 25, width: 25 }} />
                         </TouchableOpacity>
                       </View>
                     </View>
@@ -206,6 +229,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
             })}
           </ScrollView>
         </View>
+        {/* Tombol tambah data */}
         <View style={styles.footer}>
           <TouchableOpacity
             onPress={() => {
