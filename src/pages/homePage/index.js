@@ -112,7 +112,15 @@ const HomePage = ({ navigation }) => {
             </TouchableOpacity>
             <View style={{ marginTop: 30 }} />
             {/* button doa */}
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                setVisible(!visible);
+                setTimeout(() => {
+                  navigation.navigate('DoaPage');
+                }, 1200);
+              }}
+            >
               <Image source={GreenGradient} style={styles.backgroundButton} />
               <View style={styles.contentButton2}>
                 <Animatable.Image

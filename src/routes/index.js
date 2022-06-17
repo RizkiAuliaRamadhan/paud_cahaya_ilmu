@@ -12,7 +12,9 @@ import {
   DaftarGuruPage,
   RiwayatAdmin,
   DetailAlquran,
+  DoaPage,
 } from '../pages';
+import DetailDoa from '../pages/detailDoa';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,8 @@ const Routes = () => {
         <Stack.Screen name="DaftarGuruPage" component={DaftarGuruPage} options={options} />
         <Stack.Screen name="RiwayatAdmin" component={RiwayatAdmin} options={options} />
         <Stack.Screen name="DetailAlquran" component={DetailAlquran} options={options} />
+        <Stack.Screen name="DoaPage" component={DoaPage} options={options} />
+        <Stack.Screen name="DetailDoa" component={DetailDoa} options={options} />
       </Stack.Navigator>
     </NavigationContainer>
   );

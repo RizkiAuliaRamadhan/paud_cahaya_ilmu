@@ -19,6 +19,7 @@ import Back2 from './back2.png';
 import Pause from './pause.png';
 import Play from './play.png';
 import Rekam from './rekam.png';
+import ButtonOrange from './buttonOrange.png';
 
 export {
   Doa,
@@ -42,4 +43,5 @@ export {
   Pause,
   Play,
   Rekam,
+  ButtonOrange,
 };

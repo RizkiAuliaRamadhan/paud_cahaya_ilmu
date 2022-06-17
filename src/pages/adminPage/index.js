@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   body: {
-    paddingHorizontal: 25,
+    paddingHorizontal: 15,
     height: '85%',
     justifyContent: 'space-evenly',
   },

@@ -8,6 +8,7 @@ import DaftarSiswaPage from './daftarSiswaPage';
 import DaftarGuruPage from './daftarGuruPage';
 import RiwayatAdmin from './riwayat-Admin';
 import DetailAlquran from './detailAlquran';
+import DoaPage from './doaPage';
 
 export {
   SplashPage,
@@ -20,4 +21,5 @@ export {
   DaftarGuruPage,
   RiwayatAdmin,
   DetailAlquran,
+  DoaPage,
 };

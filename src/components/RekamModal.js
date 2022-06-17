@@ -67,9 +67,6 @@ const RekamModal = ({ audioRecorderPlayer }) => {
     const audioSet = {
       AudioEncoderAndroid: AudioEncoderAndroidType.AAC,
       AudioSourceAndroid: AudioSourceAndroidType.MIC,
-      AVEncoderAudioQualityKeyIOS: AVEncoderAudioQualityIOSType.high,
-      AVNumberOfChannelsKeyIOS: 2,
-      AVFormatIDKeyIOS: AVEncodingOption.aac,
     };
 
     console.log('audioSet', audioSet);
@@ -78,14 +75,14 @@ const RekamModal = ({ audioRecorderPlayer }) => {
     //   this.path,
     //   audioSet,
     // );
-    const dirs = RNFetchBlob.fs.dirs;
+    const dirs = RNFetchBlob.MusicDir;
 
-    // const path = Platform.select({
-    //   android: `${dirs.MusicDir}/hello.mp3`,
-    // });
+    const path = Platform.select({
+      android: `${dirs}/hello.mp3`,
+    });
 
     //? Default path
-    const uri = await audioRecorderPlayer.startRecorder(undefined, audioSet);
+    const uri = await audioRecorderPlayer.startRecorder(path, audioSet);
 
     audioRecorderPlayer.addRecordBackListener((e) => {
       // console.log('record-back', e);
