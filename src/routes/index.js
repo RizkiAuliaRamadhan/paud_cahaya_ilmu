@@ -13,6 +13,8 @@ import {
   RiwayatAdmin,
   DetailAlquran,
   DoaPage,
+  RiwayatHafalanSiswa,
+  RiwayatHafalanAll,
 } from '../pages';
 import DetailDoa from '../pages/detailDoa';
 
@@ -36,6 +38,12 @@ const Routes = () => {
         <Stack.Screen name="DetailAlquran" component={DetailAlquran} options={options} />
         <Stack.Screen name="DoaPage" component={DoaPage} options={options} />
         <Stack.Screen name="DetailDoa" component={DetailDoa} options={options} />
+        <Stack.Screen
+          name="RiwayatHafalanSiswa"
+          component={RiwayatHafalanSiswa}
+          options={options}
+        />
+        <Stack.Screen name="RiwayatHafalanAll" component={RiwayatHafalanAll} options={options} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -73,7 +73,11 @@ const DetailDoa = ({ route, navigation }) => {
         {/* modal rekam */}
         <Portal>
           <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-            <RekamModal audioRecorderPlayer={audioRecorderPlayer} />
+            <RekamModal
+              audioRecorderPlayer={audioRecorderPlayer}
+              navigation={navigation}
+              name={dataDoa.name}
+            />
           </Modal>
         </Portal>
         <ScrollView style={{ height: '77%', marginTop: 20 }}>

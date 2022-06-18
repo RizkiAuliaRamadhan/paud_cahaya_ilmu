@@ -20,6 +20,8 @@ import Pause from './pause.png';
 import Play from './play.png';
 import Rekam from './rekam.png';
 import ButtonOrange from './buttonOrange.png';
+import IconStar from './star.png';
+import IconStarBorder from './starborder.png';
 
 export {
   Doa,
@@ -44,4 +46,6 @@ export {
   Play,
   Rekam,
   ButtonOrange,
+  IconStar,
+  IconStarBorder,
 };

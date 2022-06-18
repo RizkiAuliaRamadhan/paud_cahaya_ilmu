@@ -59,7 +59,7 @@ const HomePage = ({ navigation }) => {
             <Text style={styles.text1}>Assalamu'alaikum</Text>
             <Text style={styles.text1}>{nama}</Text>
           </View>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          {/* <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <LottieView
               source={require('../../assets/animations/star.json')}
               autoPlay
@@ -68,7 +68,7 @@ const HomePage = ({ navigation }) => {
             />
             <View style={{ paddingRight: 5 }} />
             <Text style={styles.text1}>{bintang}</Text>
-          </View>
+          </View> */}
         </Animatable.View>
         <View style={{ height: '85%', justifyContent: 'space-between' }}>
           <Animatable.View
@@ -136,7 +136,12 @@ const HomePage = ({ navigation }) => {
             </TouchableOpacity>
             <View style={{ marginTop: 30 }} />
             {/* button riwayat */}
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => {
+                navigation.navigate('RiwayatHafalanSiswa');
+              }}
+            >
               <Image source={GreenGradient} style={styles.backgroundButton} />
               <View style={styles.contentButton}>
                 <LottieView

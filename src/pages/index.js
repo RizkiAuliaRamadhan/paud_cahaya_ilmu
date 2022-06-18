@@ -9,6 +9,8 @@ import DaftarGuruPage from './daftarGuruPage';
 import RiwayatAdmin from './riwayat-Admin';
 import DetailAlquran from './detailAlquran';
 import DoaPage from './doaPage';
+import RiwayatHafalanSiswa from './riwayatHafalanSiswa';
+import RiwayatHafalanAll from './riwayatHafalanAll';
 
 export {
   SplashPage,
@@ -22,4 +24,6 @@ export {
   RiwayatAdmin,
   DetailAlquran,
   DoaPage,
+  RiwayatHafalanSiswa,
+  RiwayatHafalanAll,
 };

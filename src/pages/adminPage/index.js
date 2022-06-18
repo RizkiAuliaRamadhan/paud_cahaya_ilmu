@@ -114,7 +114,7 @@ const AdminPage = ({ navigation }) => {
             <View style={{ marginTop: 25 }} />
             <TouchableOpacity
               style={styles.button3}
-              onPress={() => navigation.navigate('RiwayatAdmin')}
+              onPress={() => navigation.navigate('RiwayatHafalanAll')}
             >
               <LottieView
                 source={require('../../assets/animations/listhafalan.json')}
