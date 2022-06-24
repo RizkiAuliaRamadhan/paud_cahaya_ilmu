@@ -38,6 +38,7 @@ const SplashPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={Login} resizeMode="cover" style={styles.backgroundImage}>
+        <Text style={styles.text}>E-Learning Paud Cahaya Ilmu</Text>
         <Animatable.Image source={Logo} style={styles.logo} animation="zoomIn"></Animatable.Image>
       </ImageBackground>
     </View>
@@ -57,6 +58,12 @@ const styles = StyleSheet.create({
     width: responsiveWidth(150),
     height: responsiveHeight(140),
   },
+  text: {
+    position: 'absolute',
+    fontSize: 22,
+    fontWeight: 'bold',
+    top: 50
+  }
 });
 
 export default SplashPage;

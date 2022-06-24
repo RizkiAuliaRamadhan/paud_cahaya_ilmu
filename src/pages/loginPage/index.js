@@ -33,9 +33,9 @@ const LoginPage = ({ navigation }) => {
     } else {
       console.log('login gagal');
       if ((Nama === '') & (Tgl == '')) {
-        setTextError('Nama dan Tgl wajib diisi !');
+        setTextError('Username dan Password wajib diisi !');
       } else {
-        setTextError('Nama dan Tgl tidak cocok !');
+        setTextError('Username dan Password tidak cocok !');
       }
       setError(true);
     }
@@ -67,7 +67,7 @@ const LoginPage = ({ navigation }) => {
             mode="outlined"
             theme={{ roundness: 25 }}
             // label="Nama Siswa"
-            placeholder="Nama Siswa"
+            placeholder="Username"
             placeholderTextColor="#999"
             value={Nama}
             onChangeText={(value) => setNama(value)}
@@ -82,8 +82,7 @@ const LoginPage = ({ navigation }) => {
           <TextInput
             mode="outlined"
             theme={{ roundness: 25 }}
-            // label="Password"
-            placeholder="Tanggal Lahir"
+            placeholder="Password"
             placeholderTextColor="#999"
             value={Tgl}
             onChangeText={(value) => setTgl(value)}
@@ -104,8 +103,6 @@ const LoginPage = ({ navigation }) => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
-          <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 5 }}>28032017</Text>
           <Text style={styles.textError}>{error ? textError : ''}</Text>
         </View>
         <View style={{ marginTop: 20 }} />

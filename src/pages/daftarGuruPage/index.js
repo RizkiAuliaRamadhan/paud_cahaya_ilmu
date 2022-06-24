@@ -92,7 +92,7 @@ const DaftarGuruPage = ({ navigation }) => {
             <View style={{ marginBottom: 25 }} />
             <TextInput
               mode="outlined"
-              label="Nama"
+              label="Username"
               value={nama}
               onChangeText={(value) => setNama(value)}
               outlineColor="#1E40AF"
@@ -112,9 +112,9 @@ const DaftarGuruPage = ({ navigation }) => {
               style={styles.input}
               error={error}
             />
-            <View style={{ marginTop: 10 }}>
-              <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
-              <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 20 }}>28032017</Text>
+            <View style={{ marginTop: 20 }}>
+              {/* <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
+              <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 20 }}>28032017</Text> */}
             </View>
             <Button
               mode="contained"

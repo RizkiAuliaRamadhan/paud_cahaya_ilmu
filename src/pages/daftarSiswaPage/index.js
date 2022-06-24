@@ -16,7 +16,7 @@ import { DeleteData, getData } from '../../actions/dataActions';
 
 const DaftarSiswaPage = ({ route, navigation }) => {
   let { kelas } = route.params;
-
+// coba
   const [modal, setModal] = React.useState(false);
   const showModal = () => setModal(true);
   const hideModal = () => {
@@ -71,6 +71,30 @@ const DaftarSiswaPage = ({ route, navigation }) => {
     setHapus(false);
   };
 
+  const editButton = () =>{
+    
+    if (nama === '' || tgl === '') {
+      setError(true);
+    } else {
+      let email = nama + '@paudcahayailmu.com';
+      email = email.replace(/\s/g, '');
+      // email = email.toLowerCase;
+      const datas = {
+        email,
+        nama,
+        tgl,
+        role: 'siswa',
+        kelas,
+        bintang: 0,
+      };
+      dispatch(registerUser(datas, tgl));
+      setTimeout(() => {
+        dispatch(DeleteData('siswa', uid));
+        navigation.replace('AdminPage');
+      }, 2000);
+    }
+  }
+
   return (
     <View style={styles.container}>
       {/* delete data */}
@@ -101,7 +125,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
               <View style={{ marginBottom: 25 }} />
               <TextInput
                 mode="outlined"
-                placeholder="Nama"
+                placeholder="Username"
                 placeholderTextColor="#999"
                 value={nama}
                 onChangeText={(value) => setNama(value)}
@@ -112,7 +136,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
               <View style={{ marginBottom: 20 }} />
               <TextInput
                 mode="outlined"
-                placeholder="Tanggal Lahir"
+                placeholder="Password"
                 placeholderTextColor="#999"
                 value={tgl}
                 onChangeText={(value) => setTgl(value)}
@@ -120,12 +144,12 @@ const DaftarSiswaPage = ({ route, navigation }) => {
                 activeOutlineColor="#1E40AF"
                 style={styles.input}
               />
-              <View style={{ marginTop: 10 }}>
-                <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
-                <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 5 }}>28032017</Text>
+              <View style={{ marginTop: 20 }}>
+                {/* <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
+                <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 5 }}>28032017</Text> */}
               </View>
               {error && (
-                <Text style={{ color: 'red', marginBottom: 15 }}>Nama dan Tanggal harus diisi</Text>
+                <Text style={{ color: 'red', marginBottom: 15 }}>Username dan Password harus diisi</Text>
               )}
               <Button
                 mode="contained"
@@ -146,7 +170,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
               <View style={{ marginBottom: 25 }} />
               <TextInput
                 mode="outlined"
-                placeholder="Nama"
+                placeholder="Username"
                 value={nama}
                 onChangeText={(value) => setNama(value)}
                 outlineColor="#1E40AF"
@@ -156,7 +180,7 @@ const DaftarSiswaPage = ({ route, navigation }) => {
               <View style={{ marginBottom: 20 }} />
               <TextInput
                 mode="outlined"
-                placeholder="Tanggal Lahir"
+                placeholder="Password"
                 value={tgl}
                 onChangeText={(value) => setTgl(value)}
                 outlineColor="#1E40AF"
@@ -164,15 +188,15 @@ const DaftarSiswaPage = ({ route, navigation }) => {
                 style={styles.input}
               />
               <View style={{ marginTop: 10 }}>
-                <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
-                <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 20 }}>28032017</Text>
+                {/* <Text style={{ fontSize: 12, color: '#3490DC' }}>Tanggal-Bulan-Tahun</Text>
+                <Text style={{ fontSize: 12, color: '#3490DC', marginBottom: 20 }}>28032017</Text> */}
               </View>
               <Button
                 mode="contained"
                 theme={{ roundness: 50 }}
                 loading={loading}
                 style={styles.button}
-                onPress={() => {}}
+                onPress={() => {editButton()}}
                 labelStyle={{ color: '#fff' }}
               >
                 Edit
@@ -206,7 +230,8 @@ const DaftarSiswaPage = ({ route, navigation }) => {
                             setTambah(false);
                             showModal();
                             setNama(data.nama);
-                            setTgl(data.tgl);
+                            setTgl(data.tgl)
+                            setUid(key);
                           }}
                         >
                           <Image source={Edit} style={{ height: 25, width: 25 }} />
